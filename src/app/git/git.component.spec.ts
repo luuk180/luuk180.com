@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.component';
+import { GitComponent } from './git.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('GitComponent', () => {
+  let component: GitComponent;
+  let fixture: ComponentFixture<GitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ GitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(GitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
