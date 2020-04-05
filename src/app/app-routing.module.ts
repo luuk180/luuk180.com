@@ -6,8 +6,8 @@ import { GitComponent } from './git/git.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'git', component: GitComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'projects', component: GitComponent },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({
