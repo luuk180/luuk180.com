@@ -15,6 +15,10 @@ import { HomeComponent } from './home/home.component';
 import { GitComponent } from './git/git.component';
 import { NavComponent } from './nav/nav.component';
 
+import { HttpClientModule } from "@angular/common/http";
+import { ApolloModule, APOLLO_OPTIONS } from "apollo-angular";
+import { HttpLinkModule, HttpLink } from "apollo-angular-link-http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +36,23 @@ import { NavComponent } from './nav/nav.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+    ApolloModule,
+    HttpLinkModule
   ],
-  providers: [],
+  providers: [{
+    provide: APOLLO_OPTIONS,
+    useFactory: (httpLink: HttpLink) => {
+      return {
+        cache: new InMemoryCache(),
+        link: httpLink.create({
+          uri: "https://api.github.com/graphql"
+        })
+      }
+    },
+    deps: [HttpLink]
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
