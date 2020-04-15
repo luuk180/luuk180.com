@@ -12,15 +12,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
-import { GitComponent } from './git/git.component';
 import { NavComponent } from './nav/nav.component';
+import { ProjectsComponent } from './projects/projects.component';
+
+import { HttpClientModule } from "@angular/common/http";
+import { AboutComponent } from './about/about.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GitComponent,
-    NavComponent
+    NavComponent,
+    AboutComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,9 @@ import { NavComponent } from './nav/nav.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    GraphQLModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

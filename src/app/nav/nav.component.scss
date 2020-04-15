@@ -2,10 +2,6 @@ span{
   padding-right: 1rem;
 }
 
-.mat-toolbar{
-  background: #209CEE;
-}
-
 .unselectable{
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -13,4 +9,8 @@ span{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.fill-space {
+  flex: 1 1 auto;
 }
