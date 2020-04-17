@@ -14,10 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { ProjectsComponent } from './projects/projects.component';
-
-import { HttpClientModule } from "@angular/common/http";
 import { AboutComponent } from './about/about.component';
-import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -38,8 +35,6 @@ import { GraphQLModule } from './graphql.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    GraphQLModule,
-    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
