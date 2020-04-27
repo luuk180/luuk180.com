@@ -8,12 +8,12 @@ steps:
    name: 'node:current'
    entrypoint: 'npm'
    args:
-   - 'build'
+   - 'run build'
    waitFor:
    - install_packages
  - id: copy_prerendered_files
    name: 'gcr.io/cloud-builders/gsutil'
-   args: ['cp','-r','dist/browser/*', '\${_ANGULAR_APP_BUCKET_PATH}']
+   args: ['cp','-r','dist/Portfolio/*', '\${_ANGULAR_APP_BUCKET_PATH}']
    waitFor:
    - prerender_browser_files
  - id: set_website_configuration
