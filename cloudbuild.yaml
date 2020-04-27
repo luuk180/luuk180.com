@@ -1,14 +1,14 @@
 steps:
  - id: install_packages
-   name: 'node:current'
+   name: 'node'
    entrypoint: 'npm'
    args:
    - 'install'
  - id: prerender_browser_files
-   name: 'node:current'
+   name: 'node'
    entrypoint: 'npm'
    args:
-   - 'run build'
+   - 'run', 'build'
    waitFor:
    - install_packages
  - id: remove_old_files
