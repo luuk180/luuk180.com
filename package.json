@@ -4,15 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build:client-and-server-bundles": "ng build --prod --aot",
-    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
-    "generate:prerender": "npm run webpack:prerender && node dist/prerender.js",
-    "compile:prerender": "tsc -p prerender.tsconfig.json",
-    "webpack:prerender": "webpack --config webpack.prerender.config.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
