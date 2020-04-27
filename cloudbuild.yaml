@@ -7,8 +7,7 @@ steps:
  - id: prerender_browser_files
    name: 'node'
    entrypoint: 'npm'
-   args:
-   - 'run', 'build'
+   args: ['run', 'build']
    waitFor:
    - install_packages
  - id: remove_old_files
