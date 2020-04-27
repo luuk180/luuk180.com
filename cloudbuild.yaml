@@ -1,10 +1,10 @@
 steps:
  - id: install_packages
-   name: 'gcr.io/cloud-builders/npm'
+   name: 'node:current'
    args:
    - 'install'
  - id: prerender_browser_files
-   name: 'gcr.io/cloud-builders/npm'
+   name: 'node:current'
    args:
    - 'run'
    - 'build:prerender'
