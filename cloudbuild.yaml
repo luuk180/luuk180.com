@@ -1,10 +1,12 @@
 steps:
  - id: install_packages
    name: 'node:current'
+   entrypoint: 'npm'
    args:
    - 'install'
  - id: prerender_browser_files
    name: 'node:current'
+   entrypoint: 'npm'
    args:
    - 'run'
    - 'build:prerender'
