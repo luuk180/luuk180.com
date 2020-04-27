@@ -1,16 +1,9 @@
 steps:
- - id: install_packages
+ - id: install_packages_and_build
    name: 'node:current'
    entrypoint: 'npm'
    args:
-   - 'install'
- - id: prerender_browser_files
-   name: 'node:current'
-   entrypoint: 'npm'
-   args:
-   - 'run-script build'
-   waitFor:
-   - install_packages
+   - 'install && npm run build'
  - id: remove old files
    name: 'gcr.io/cloud-builders/gsutil'
    args: ['rm', '-rf', '\$_ANGULAR_APP_BUCKET_PATH']
