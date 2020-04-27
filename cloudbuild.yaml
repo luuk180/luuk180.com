@@ -6,9 +6,9 @@ steps:
    - 'install'
  - id: prerender_browser_files
    name: 'node:current'
-   entrypoint: 'ng'
+   entrypoint: 'npm'
    args:
-   - 'build --prod --aot'
+   - 'run build'
    waitFor:
    - install_packages
  - id: remove_old_files
