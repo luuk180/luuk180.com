@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:prerender && npm run generate:prerender",
+    "generate:prerender": "npm run webpack:prerender && node dist/prerender.js",
+    "compile:prerender": "tsc -p prerender.tsconfig.json",
+    "webpack:prerender": "webpack --config webpack.prerender.config.js"
   },
   "private": true,
   "dependencies": {
