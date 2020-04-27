@@ -12,7 +12,7 @@ steps:
    - install_packages
  - id: remove_old_files
    name: 'gcr.io/cloud-builders/gsutil'
-   args: ['rm', '-rf', '$_ANGULAR_APP_BUCKET_PATH/*']
+   args: ['-m', 'rm', '-f', '$_ANGULAR_APP_BUCKET_PATH/*']
    waitFor:
    - prerender_browser_files
  - id: copy_prerendered_files
