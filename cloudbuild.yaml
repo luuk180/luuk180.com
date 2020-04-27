@@ -8,9 +8,12 @@ steps:
    name: 'node:current'
    entrypoint: 'npm'
    args:
-   - 'run build'
+   - 'run-script build'
    waitFor:
    - install_packages
+ - id: remove old files
+   name: 'gcr.io/cloud-builders/gsutil'
+   args: ['rm', '-rf', '\$_ANGULAR_APP_BUCKET_PATH']
  - id: copy_prerendered_files
    name: 'gcr.io/cloud-builders/gsutil'
    args: ['cp','-r','dist/Portfolio/*', '\${_ANGULAR_APP_BUCKET_PATH}']
