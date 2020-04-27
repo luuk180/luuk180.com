@@ -4,14 +4,16 @@ steps:
    entrypoint: 'npm'
    args:
    - 'install && npm run build'
- - id: remove old files
+ - id: remove_old_files
    name: 'gcr.io/cloud-builders/gsutil'
    args: ['rm', '-rf', '\$_ANGULAR_APP_BUCKET_PATH']
+   waitFor:
+   - install_packages_and_build
  - id: copy_prerendered_files
    name: 'gcr.io/cloud-builders/gsutil'
    args: ['cp','-r','dist/Portfolio/*', '\${_ANGULAR_APP_BUCKET_PATH}']
    waitFor:
-   - prerender_browser_files
+   - remove_old_files
  - id: set_website_configuration
    name: 'gcr.io/cloud-builders/gsutil'
    args: ['web', 'set', '-m', 'index.html','\${_ANGULAR_APP_BUCKET_PATH}']
