@@ -17,7 +17,7 @@ steps:
    waitFor:
    - build_angular
  - id: deploy_firebase
-   name: 'gcr.io/pearbot-app/firebase'
+   name: 'gcr.io/luuk180-dev/firebase'
    args: ['deploy']
    waitFor:
    - build_angular
