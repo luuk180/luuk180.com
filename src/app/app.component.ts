@@ -15,6 +15,8 @@ export class AppComponent {
       map(result => result.matches),
       shareReplay()
     );
-    
-  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    firebase.analytics();
+  }
 }
