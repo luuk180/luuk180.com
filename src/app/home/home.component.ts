@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    firebase.analytics().log("Homepage loaded!");
+    firebase.analytics().log();
   }
 
 }
