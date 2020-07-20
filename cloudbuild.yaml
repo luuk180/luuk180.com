@@ -11,7 +11,7 @@ steps:
  - id: build_deploy
    name: 'node'
    entrypoint: 'npm'
-   args: ['run', 'Portfolio:deploy']
+   args: ['run', 'deploy']
    waitFor:
    - install_packages
    - install_functions_packages
