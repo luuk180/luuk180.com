@@ -15,8 +15,9 @@ import { NavComponent } from './nav/nav.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AboutComponent } from './about/about.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire
     MatIconModule,
     MatListModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
   ],
   providers: [
