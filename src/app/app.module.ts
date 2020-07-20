@@ -42,7 +42,9 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
   ],
-  providers: [],
+  providers: [
+    ScreenTrackingService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
