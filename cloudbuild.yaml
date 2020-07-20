@@ -3,21 +3,15 @@ steps:
    name: 'node'
    entrypoint: 'npm'
    args: ['install']
- - id: build_angular
-   name: 'node'
-   entrypoint: 'npm'
-   args: ['run', 'build']
-   waitFor:
-   - install_packages
  - id: install_functions_packages
    name: 'node'
    entrypoint: 'npm'
    args: ['install']
    dir: functions
+ - id: build_deploy
+   name: 'node'
+   entrypoint: 'npm'
+   args: ['run', 'Portfolio:deploy']
    waitFor:
-   - build_angular
- - id: deploy_firebase
-   name: 'gcr.io/luuk180-dev/firebase'
-   args: ['deploy']
-   waitFor:
-   - build_angular
+   - install_packages
+   - install_functions_packages
