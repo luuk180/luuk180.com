@@ -17,7 +17,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { AboutComponent } from './about/about.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
 
 @NgModule({
   declarations: [
