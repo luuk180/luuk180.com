@@ -1,15 +1,7 @@
-import("./setup.mjs");
+//const functions = require('firebase-functions');
+//const admin = require('firebase-admin');
+const requestGit = require('./requestGit');
 
-client.query({
-	query: gql`
-	user(login: "luuk180") {
-		repositories(orderBy: {field: PUSHED_AT, direction: DESC}, first:99) {
-			nodes {
-				name
-				url
-				description
-				pushedAt
-			}
-		}
-	}
-`}).then(result => console.log(result));
+//admin.initalizeApp();
+
+console.log(requestGit);
