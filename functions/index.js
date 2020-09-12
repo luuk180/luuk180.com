@@ -38,5 +38,5 @@ exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
 
   console.log(res);
 
-  return null;
+  return data;
 });
