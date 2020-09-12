@@ -35,7 +35,6 @@ exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
   console.log(data);
 
   const res = admin.firestore().collection('GitHubAPI').doc('EcLVxMbaEJQXhChJwNUw').set({data});
-  res.json({result: `Message with ID: ${res.id} set.`});
 
   console.log(res);
 
