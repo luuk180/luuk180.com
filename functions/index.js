@@ -1,12 +1,17 @@
 const fetch = require('node-fetch');
 const functions = require('firebase-functions');
 
+var serviceAccount = require("./credentials.json");
 const admin = require('firebase-admin');
-admin.initializeApp();
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://luuk180-dev.firebaseio.com"
+});
 const db = admin.firestore();
 
 // Fetch repository information from GitHub
-exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
+exports.GitHubToDB = functions.pubsub.schedule('0 * * * *')
   .timeZone('America/New_York').onRun(async (context) => {
   const response = await fetch('https://api.github.com/graphql', {
         method: 'POST',
@@ -33,7 +38,8 @@ exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
   const json = await response.json();
   const data = json.data.user.repositories.nodes;
 
-  const dbRef = db.collection("GitHubAPI").doc("EcLVxMbaEJQXhChJwNUw");
+  const res = admin.firestore().collection('GitHubAPI').doc('EcLVxMbaEJQXhChJwNUw').set({data});
+  console.log(res);
 
-  return dbRef.update({data});
+  return res;
 });
