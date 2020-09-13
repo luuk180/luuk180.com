@@ -3,6 +3,7 @@ const functions = require('firebase-functions');
 
 const admin = require('firebase-admin');
 admin.initializeApp();
+const db = admin.firestore();
 
 // Fetch repository information from GitHub
 exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
@@ -30,13 +31,9 @@ exports.GitHubToDB = functions.pubsub.schedule('*/30 * * * *')
         }),
   });
   const json = await response.json();
-
   const data = json.data.user.repositories.nodes;
-  console.log(data);
 
-  const res = admin.firestore().collection('GitHubAPI').doc('EcLVxMbaEJQXhChJwNUw').set({data});
+  const dbRef = db.collection("GitHubAPI").doc("EcLVxMbaEJQXhChJwNUw");
 
-  console.log(res);
-
-  return data;
+  return dbRef.update({data});
 });
