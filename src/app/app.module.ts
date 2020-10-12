@@ -18,6 +18,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
 import { environment } from '../environments/environment';
+import { CvComponent } from './cv/cv.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { environment } from '../environments/environment';
     HomeComponent,
     NavComponent,
     AboutComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    CvComponent
   ],
   imports: [
     BrowserModule,
