@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CvComponent implements OnInit {
 
+  pdfSrc = '../../assets/pdf/cv.pdf';
+
   constructor() { }
 
   ngOnInit(): void {
