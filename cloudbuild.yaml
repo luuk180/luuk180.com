@@ -1,6 +1,6 @@
 steps:
  - id: decrypt-key
-   name: gcr.io/google.com/cloudsdktool/cloud-sdk
+   name: gcr.io/cloud-builders/gcloud
    args:
    - kms
    - decrypt
