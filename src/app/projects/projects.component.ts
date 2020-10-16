@@ -11,16 +11,16 @@ export class ProjectsComponent implements OnInit {
 
   constructor(db: AngularFirestore) {
     var docRef = db.collection('GitHubAPI').doc('EcLVxMbaEJQXhChJwNUw');
-    docRef.get().then(function(data) {
-      if (data.exists) {
-        console.log(data.data());
+    const data = docRef.get().toPromise().then(function(doc) {
+      if (doc.exists) {
+          console.log("Document data:", doc.data().data);
       } else {
-        console.log("Document not found");
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
       }
-    }).catch(function(error) {
-      console.log(error);
-    });
-  }
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });}
 
   ngOnInit(): void { }
 }
