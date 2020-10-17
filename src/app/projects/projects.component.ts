@@ -21,7 +21,7 @@ async function getGitQuery(){
   const response = await fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: {
-        'Authorization': `bearer 23daaaceb9b25674c3592ef17bfc58828d8d2b0a`
+        'Authorization': `bearer 6dd05672619a6564b36369367971925dff99ef24`
         },
         body: JSON.stringify({
           query: `
