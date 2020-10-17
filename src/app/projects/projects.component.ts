@@ -18,27 +18,8 @@ export class ProjectsComponent implements OnInit {
 }
 
 async function getGitQuery(){
-  const response = await fetch('https://api.github.com/graphql', {
-        method: 'POST',
-        headers: {
-        'Authorization': `bearer 6dd05672619a6564b36369367971925dff99ef24`
-        },
-        body: JSON.stringify({
-          query: `
-          {
-            user(login: "luuk180") {
-              repositories(first: 99, orderBy: {field: PUSHED_AT, direction: DESC}) {
-                nodes {
-                  name
-                  description
-                  url
-                  pushedAt
-                }
-              }
-            }
-          }
-          `,
-        }),
+  const response = await fetch('https://us-central1-luuk180-dev.cloudfunctions.net/GitHubAPI', {
+    method: 'GET',
   });
   const json = await response.json();
   const data = json.data.user.repositories.nodes;
