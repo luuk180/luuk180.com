@@ -1,5 +1,5 @@
 <div *ngFor="let entry of entries">
-  <mat-card class="card">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>
         {{entry.name}}
@@ -12,9 +12,8 @@
     </mat-card-header>
     <mat-card-content>
       {{entry.description}}
-    </mat-card-content>
-    <mat-card-footer>
+      <br /> <br />
       {{entry.url}}
-    </mat-card-footer>
+    </mat-card-content>
   </mat-card>
 </div>
