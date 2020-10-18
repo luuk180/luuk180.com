@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectsComponent implements OnInit {
   entries;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
     getGitQuery().then((query) => this.entries = query);
     console.log(this.entries);
   }
+
+  ngOnInit(): void { }
 }
 
 async function getGitQuery(){
