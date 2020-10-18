@@ -28,7 +28,7 @@ app.use(cors({ origin: true }));
 app.get('/', (req, res) => {
   res.header('Access-Control-Allow-Origin', '*');
   ref.once('value').then(snapshot => {
-    res.send(snapshot.val());
+    res.status(200).send(snapshot.val());
   });
 });
 
