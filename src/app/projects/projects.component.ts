@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-projects',
@@ -22,7 +21,6 @@ async function getGitQuery(){
     method: 'GET',
   });
   const json = await response.json();
-  const data = json.data.user.repositories.nodes;
 
-  return data;
+  return json;
 }

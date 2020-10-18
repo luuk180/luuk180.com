@@ -15,34 +15,26 @@ const app = express();
 // });
 
 const serviceAccount = require('../credentials.json');
-let globalData = [
-  {
-    name: 'Not loaded yet...',
-    description: null,
-    url: null,
-    pushedAt: null
-  },
-  {
-    name: 'null',
-    description: null,
-    url: null,
-    pushedAt: null
-  },
-];
-
-app.use(cors({ origin: true }));
-app.get('/', (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.send(globalData);
-});
-
-exports.GitHubAPI = functions.https.onRequest(app);
-
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: 'https://luuk180-dev.firebaseio.com'
 });
+
+const db = admin.database();
+const ref = db.ref('GH-API');
+
+app.use(cors({ origin: true }));
+app.get('/', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  ref.once('value').then(snapshot => {
+    res.send(snapshot.val());
+  });
+});
+
+exports.GitHubAPI = functions.https.onRequest(app);
+
+
 
 // Fetch repository information from GitHub
 exports.GitHubToDB = functions.pubsub.schedule('0 * * * *')
@@ -72,7 +64,7 @@ exports.GitHubToDB = functions.pubsub.schedule('0 * * * *')
   const json = await response.json();
   const data = json.data.user.repositories.nodes;
 
-  globalData = data;
+  ref.set(data);
 
   return 0;
 });
